@@ -16,6 +16,7 @@ export const signup = async(req, res, next)=> {
         next(err)
     }
 }
+
 export const signin = async(req, res, next)=> {
     try {
         const user = await User.findOne({name:req.body.name})
@@ -23,7 +24,9 @@ export const signin = async(req, res, next)=> {
         // check password
         const isCorrect = await bcrypt.compare(req.body.password, user.password)
         if(!isCorrect) return next(createError(404, "Incorrect Password"))
-        // giving token to user to varify and to keep him loggedin
+        // giving token to user to varify user when he does something on site and to keep him loggedin
+        // token is a key element in user
+        // JWT is a secret token hash for our users only
         const token = jwt.sign({id:user._id}, process.env.JWT)
         // stop password from going to server
         const {password, ...others} = user._doc;

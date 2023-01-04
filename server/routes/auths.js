@@ -1,5 +1,5 @@
 // made this bcz authentication is the key part of an api so it should be separated
-import express, { application } from 'express';
+import express from 'express';
 import { signin, signup } from '../controllers/auth.js';
 
 const router = express.Router()

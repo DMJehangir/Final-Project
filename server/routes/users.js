@@ -1,4 +1,4 @@
-import express, { application } from 'express';
+import express from 'express';
 import { test, deleteUser, dislike, getUser, like, subscribe, unsubscribe, update } from '../controllers/user.js';
 import { verifyToken } from '../verifyToken.js';
 

@@ -24,9 +24,9 @@ const connect = () => {
 }
 
 app.use('/api/users', userRoutes) // test fire works
+app.use('/api/auths', authRoutes)
 app.use('/api/videos', videoRoutes)
 app.use('/api/comments', commentRoutes)
-app.use('/api/auths', authRoutes) //Something went wrong here, data not parsing to db, check auths then auth, server not connecting
 
 app.use((err, req, res, next)=>{
     const status = err.status || 500;
