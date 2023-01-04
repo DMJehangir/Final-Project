@@ -23,9 +23,7 @@ const connect = () => {
     })
 }
 
-// cloned it on Old Laptop
-
-app.use('/api/users', userRoutes)
+app.use('/api/users', userRoutes) // test fire works
 app.use('/api/videos', videoRoutes)
 app.use('/api/comments', commentRoutes)
 app.use('/api/auths', authRoutes) //Something went wrong here, data not parsing to db, check auths then auth, server not connecting

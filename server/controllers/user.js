@@ -1,6 +1,10 @@
 import { createError } from "../error.js"
 import User from "../models/User.js"
 
+export const test = (req, res, next) => {
+    res.json('It is working')
+}
+
 export const update = async (req, res, next) => {
     if(req.params.id === req.user.id){
         try {
