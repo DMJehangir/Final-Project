@@ -23,6 +23,8 @@ const connect = () => {
     })
 }
 
+// cloned it on Old Laptop
+
 app.use('/api/users', userRoutes)
 app.use('/api/videos', videoRoutes)
 app.use('/api/comments', commentRoutes)
