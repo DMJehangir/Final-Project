@@ -38,7 +38,7 @@ export const deleteUser = async (req, res, next) => {
     }
 }
 
-// 
+// Find a user | checkout a channel
 export const getUser = async (req, res, next) => {
     try {
         const user = await User.findById(req.params.id)
@@ -47,6 +47,8 @@ export const getUser = async (req, res, next) => {
         next(err)
     }
 }
+
+// Subscribe a channel
 export const subscribe = async (req, res, next) => {
     try {
         await User.findById(req.user.id, {
@@ -60,6 +62,8 @@ export const subscribe = async (req, res, next) => {
         next(err)
     }
 }
+
+// Unsubscribe a channel
 export const unsubscribe = async (req, res, next) => {
     try {
         await User.findById(req.user.id, {
@@ -73,6 +77,8 @@ export const unsubscribe = async (req, res, next) => {
         next(err)
     }
 }
+
+// pending work
 export const like = async (req, res, next) => {
     try {
         
