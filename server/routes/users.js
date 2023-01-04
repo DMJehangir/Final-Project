@@ -8,16 +8,16 @@ router.get("/test", test)
 // update user
 router.put("/:id", verifyToken, update)
 // delete user
-router.delete("/:id", deleteUser)
+router.delete("/:id", verifyToken, deleteUser)
 // get a user
 router.get("/find/:id", getUser)
 // subscribe
-router.get("/sub/:id", subscribe)
+router.get("/sub/:id", verifyToken, subscribe)
 // unsubscribe
-router.get("/unsub/:id", unsubscribe)
+router.get("/unsub/:id", verifyToken, unsubscribe)
 // like a video
-router.get("/like/:id", like)
+router.get("/like/:videoId", verifyToken, like)
 // dislike a video
-router.get("/dislike/:id", dislike)
+router.get("/dislike/:videoId", verifyToken, dislike)
 
 export default router;
