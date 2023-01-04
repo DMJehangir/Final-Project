@@ -24,7 +24,7 @@ export const signin = async(req, res, next)=> {
         const isCorrect = await bcrypt.compare(req.body.password, user.password)
         if(!isCorrect) return next(createError(404, "Incorrect Password"))
         // giving token to user to varify and to keep him loggedin
-        const token = jwt.sign({id:user._id}, process.env.Jwt)
+        const token = jwt.sign({id:user._id}, process.env.JWT)
         // stop password from going to server
         const {password, ...others} = user._doc;
         // giving token thru cookie it will make our site secure from 3rd parties
