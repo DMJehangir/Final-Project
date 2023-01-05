@@ -23,7 +23,7 @@ const connect = () => {
     })
 }
 
-app.use('/api/users', userRoutes) // test fire works
+app.use('/api/users', userRoutes)
 app.use('/api/auths', authRoutes)
 app.use('/api/videos', videoRoutes)
 app.use('/api/comments', commentRoutes)
@@ -42,3 +42,9 @@ const PORT = 8800;
 app.listen(PORT, ()=>{
     connect()
     console.log('Server Listening on Port ' + PORT)})
+
+// Internet is not available so i have to wait for sometime,
+// I am already late but what can i do about it,
+// a weird boy watching me doing that so Ihave to pretend working right now,
+// he seems to think that i am watching TV or something,
+// ,playing games with my laptop.
