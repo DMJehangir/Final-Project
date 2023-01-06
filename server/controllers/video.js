@@ -74,7 +74,7 @@ export const addView = async (req, res, next) => {
 // displaying random videos
 export const random = async (req, res, next) => {
     try {
-        const videos = await Video.aggregate([{$sample: {size: 1}}])// if we use find() then its gonna sort the videos before return
+        const videos = await Video.aggregate([{$sample: {size: 40}}])// if we use find() then its gonna sort the videos before return
         res.status(200).json(videos)
     } catch (err) {
         next(err)
@@ -113,8 +113,9 @@ export const sub = async (req, res, next) => {
 
 // displaying videos searched by tags
 export const getByTags = async (req, res, next) => {
+    const tags = req.query.tags.split(",")
     try {
-        const videos = await Video.find().sort({views:-1})
+        const videos = await Video.find({tags: {$in: tags}}).limit(20).sort({views:-1})
         res.status(200).json(videos)
     } catch (err) {
         next(err)
@@ -123,8 +124,10 @@ export const getByTags = async (req, res, next) => {
 
 // displaying videos searched by titles
 export const search = async (req, res, next) => {
+    const query = req.query.q
     try {
-        const videos = await Video.find().sort({views:-1})
+        const videos = await Video.find({title: {$regex: query, $options: "i"},
+    }).limit(20)
         res.status(200).json(videos)
     } catch (err) {
         next(err)
