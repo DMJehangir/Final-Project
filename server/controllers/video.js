@@ -125,7 +125,7 @@ export const getByTags = async (req, res, next) => {
 // displaying videos searched by titles
 export const search = async (req, res, next) => {
     const query = req.query.q
-    try {
+    try { // have to study $regex and other methods of mongoDB
         const videos = await Video.find({title: {$regex: query, $options: "i"},
     }).limit(20)
         res.status(200).json(videos)

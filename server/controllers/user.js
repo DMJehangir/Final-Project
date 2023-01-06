@@ -1,5 +1,6 @@
 import { createError } from "../error.js"
 import User from "../models/User.js"
+import Video from "../models/Video.js"
 
 // test fire
 export const test = (req, res, next) => {
@@ -78,17 +79,29 @@ export const unsubscribe = async (req, res, next) => {
     }
 }
 
-// pending work
 export const like = async (req, res, next) => {
+    const id = req.user.id;
+    const videoId = req.params.videoId;
     try {
-        
+        await Video.findByIdAndUpdate(videoId, {
+            // if used $push method, it would have added the id despite of the already presence
+            $addToSet: {likes: id},
+            $pull: {dislikes: id}
+        })
+        res.status(200).json("You liked the Video")
     } catch (err) {
         next(err)
     }
 }
 export const dislike = async (req, res, next) => {
+    const id = req.user.id;
+    const videoId = req.params.videoId;
     try {
-        
+        await Video.findByIdAndUpdate(videoId, {
+            $addToSet: {dislikes: id},
+            $pull: {likes: id}
+        })
+        res.status(200).json("You disliked the Video")
     } catch (err) {
         next(err)       
     }

@@ -23,10 +23,11 @@ import mongoose from "mongoose";
     },
     likes: {
         type: [String],
-        default: 0
+        default: []
     },
     dislikes: {
-        type: [String]
+        type: [String],
+        default: []
     },
     tags: {
         type: [String],
