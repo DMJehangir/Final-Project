@@ -17,6 +17,6 @@ import mongoose from "mongoose";
   { timestamps: true}
  );
 
- const Comment = mongoose.model('Comment', videoSchema)
+ const Comment = mongoose.model('Comment', commentSchema)
 
  export default Comment;
