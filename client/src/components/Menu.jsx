@@ -17,9 +17,10 @@ import ReportIcon from '@mui/icons-material/Report';
 import PsychologyAltIcon from '@mui/icons-material/PsychologyAlt';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import {Link} from 'react-router-dom'
 
 const Container = styled.div`
-  flex: 1.5;
+  flex: 1;
   background-color: ${({theme}) => theme.bg};
   height: 100vh;
   color: ${({theme}) => theme.text};
@@ -85,10 +86,12 @@ function Menu({darkMode, setDarkMode}) {
   return (
     <Container>
       <Wrapper>
-        <Logo>
-            <Img src={TutorNext}/>
-            TutorNext
-        </Logo>
+      <Link to='/' style={{textDecoration: "none", color: "inherit"}}>
+          <Logo>
+              <Img src={TutorNext}/>
+              TutorNext
+          </Logo>
+        </Link>
         <Item><HomeIcon/>Home</Item>
         <Item><ExploreIcon/>Explore</Item>
         <Item><SubscriptionsIcon/>Subscription</Item>
